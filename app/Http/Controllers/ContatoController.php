@@ -9,6 +9,16 @@ use Illuminate\Http\Request;
 class ContatoController extends Controller
 {
     public function index()
+    {  
+
+        $motivo_contato = MotivoContato::all();
+        // dd($motivo_contato);     
+
+        //para carregar a view do formulário
+        return view('site.contato', ['titulo' => 'Contato', 'motivo_contatos' => $motivo_contato]);
+    }
+
+    public function salvar(Request $request)
     {
         /*
        Primeira forma de salvar os dados no banco de dados
@@ -31,17 +41,6 @@ class ContatoController extends Controller
         //$contato->fill($request->all());
         //$contato->save();
         //$contato->create($request->all());
-
-
-        $motivo_contato = MotivoContato::all();
-        // dd($motivo_contato);     
-
-        //para carregar a view do formulário
-        return view('site.contato', ['titulo' => 'Contato', 'motivo_contatos' => $motivo_contato]);
-    }
-
-    public function salvar(Request $request)
-    {
 
         //Como relizar a validação dos dados antes de salvar os dados no banco de dados.
 

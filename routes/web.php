@@ -27,11 +27,9 @@ Route::get('/', 'PrincipalController@index')
 Route::get('/sobrenos', 'SobreNosController@index')->name('site.sobrenos');
 
 Route::get('/contato', 'ContatoController@index')->name('site.contato');
-Route::post('/contato', 'ContatoController@salvar')->name('site.contato');
+Route::post('/contato', 'ContatoController@salvar')->name('salvar.contato');
 Route::get('/login/{erro?}', 'LoginController@index')->name('site.login');
 Route::post('/login', 'LoginController@autenticar')->name('site.login');
-
-
 
 //AGRUPAMENTOS DE ROTAS ADM...PARA O AGRUPAMENTO DE ROTAS USAMOS A SIGLA PREFIX.
 Route::middleware('autenticacao:padrao,.administrador')->prefix('/app')->group(function () {
@@ -41,8 +39,6 @@ Route::middleware('autenticacao:padrao,.administrador')->prefix('/app')->group(f
     Route::get('/fornecedores', 'FornecedorController@index')->name('app.fornecedores');
     Route::get('/produtos', function(){return "Cadastro de produtos";})->name('app.produtos');
 });
-
-
 
 //ROTA DE FALLBACK...
 Route::fallback(function () {
