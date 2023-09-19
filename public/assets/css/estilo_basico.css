@@ -110,14 +110,14 @@ button:hover {
 }
 
 .esquerda {
-    float:left;
+    float: left;
     background-color: #268fd0;
     width: 60%;
     height: 100%;
 }
 
 .direita {
-    float:right;
+    float: right;
     background-color: #2a9ee2;
     width: 40%;
     height: 100%;
@@ -153,9 +153,14 @@ button:hover {
 }
 
 .titulo-pagina {
-    padding: 100px 0px 60px 0px;
+    padding: 60px 0px 50px 0px;
     background-color: #2a9ee2;
+    margin-bottom: 10px;
     text-align: center;
+    -webkit-box-shadow: -1px 11px 5px 0px rgba(191, 189, 191, 1);
+    -moz-box-shadow: -1px 11px 5px 0px rgba(191, 189, 191, 1);
+    box-shadow: -1px 11px 5px 0px rgba(191, 189, 191, 1);
+    
 }
 
 .informacao-pagina {
@@ -163,7 +168,7 @@ button:hover {
     margin-top: 30px;
 }
 
-.informacao-pagina p{
+.informacao-pagina p {
     color: #333;
 }
 
@@ -173,7 +178,7 @@ button:hover {
 
 .redes-sociais, .area-contato, .localizacao {
     width: 33.333%;
-    border-top:solid 1px #ccc;
+    border-top: solid 1px #ccc;
     float: left;
     text-align: center;
     background-color: #f8f8f8;

@@ -3,6 +3,33 @@
 @section('titulo', 'Cliente')
 
 @section('conteudo')
+
+    <div class="conteudo-basico">
+        <div class="titulo-pagina">
+            <p>Listagem de Fornecedores</p>
+        </div>
+        <div class="menu">
+            <ul>
+                <li>
+                    <a href="{{route('app.fornecedor.create')}}">Novo</a>
+                    <a href="{{route('app.fornecedor')}}">Pesquisar</a>
+                </li>
+            </ul>
+        </div>
+        <div class="informacao-pagina">
+            <div style="width: 30%; margin-left: auto; margin-right: auto;">
+                <form action="" method="post">
+                    <input type="text"name="nome"placeholder="Nome" class="borda-preta">
+                    <input type="text"name="site"placeholder="Site" class="borda-preta">
+                    <input type="text"name="uf"placeholder="UF"     class="borda-preta">
+                    <input type="text"name="email"placeholder="E-mail" class="borda-preta">
+                    <button type="submit" class="borda-preta">Pesquisar</button>                 
+
+                </form>
+            </div>
+        </div>
+    </div> 
+
     {{-- ESTRUTURA DE CONTROLE DE DECIÇÃO COM BLADE IF, ELSEIF E ELSE --}}
     <h3 class="mb-5">Lista de Fornecedores</h3>
     <table class="table table-striped table-hover table-bordered table-responsive ">
@@ -18,7 +45,7 @@
             </tr>
         </thead>
         <tbody class="mb-5">
-          
+
             @if (count($fornecedores) > 0 && count($fornecedores) < 10)
                 @foreach ($fornecedores as $fornecedor)
                     <tr>
@@ -38,6 +65,6 @@
             @endif
         </tbody>
 
-    </table>
+    </table>  
 
 @endsection
