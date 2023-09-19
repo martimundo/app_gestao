@@ -63,9 +63,15 @@ class LoginController extends Controller
 
             //dd($_SESSION);
 
-           return redirect()->route('app.clientes');
+           return redirect()->route('app.cliente');
         } else {
             return redirect()->route('site.login', ['erro'=>1]);
         }
+    }
+
+    public function logout(){
+
+        session_destroy();
+        return redirect()->route('site.login');
     }
 }

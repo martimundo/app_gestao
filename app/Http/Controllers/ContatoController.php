@@ -54,9 +54,9 @@ class ContatoController extends Controller
         $feedback = [
 
             'nome.required' => "O campo Nome, precisa ser preenchido",
-            'nome.min' => "O nome precisa term no minimo 5 caracteres",
-            'nome.max' => "O nome deve term no máximo 100 caracteres",
-            'nome.unique' => "O noem informado ja esta cadastrado",
+            'nome.min' => "O nome precisa ter no minimo 5 caracteres",
+            'nome.max' => "O nome deve ter no máximo 100 caracteres",
+            'nome.unique' => "O nome informado ja esta cadastrado",
             'email.email' => "Informe um email valido",
             'mensagem.max' => "A mensgem deve ter no máximo 2000 caracteres",
             'required' => "O campo :attribute deve ser preenchido"

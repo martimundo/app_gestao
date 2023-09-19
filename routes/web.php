@@ -3,20 +3,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 
 //ROTAS NOMEADOS PASSAMOS O HELPER DO LARAVAEL ->NAME()....
 Route::get('/', 'PrincipalController@index')
@@ -34,10 +21,11 @@ Route::post('/login', 'LoginController@autenticar')->name('site.login');
 //AGRUPAMENTOS DE ROTAS ADM...PARA O AGRUPAMENTO DE ROTAS USAMOS A SIGLA PREFIX.
 Route::middleware('autenticacao:padrao,.administrador')->prefix('/app')->group(function () {
 
-    Route::get('/adm', function(){return "Acesso ao Painel Adm";})->name('app.adm');
-    Route::get('/clientes', function () {return 'Área de Clientes';})->name('app.clientes');
-    Route::get('/fornecedores', 'FornecedorController@index')->name('app.fornecedores');
-    Route::get('/produtos', function(){return "Cadastro de produtos";})->name('app.produtos');
+    Route::get('/home', 'HomeController@index')->name('app.home');
+    Route::get('/sair', 'LoginController@logout')->name('app.sair');
+    Route::get('/cliente', 'ClienteController@index')->name('app.cliente');
+    Route::get('/fornecedor', 'FornecedorController@index')->name('app.fornecedor');
+    Route::get('/produto', 'ProdutoController@index')->name('app.produto');
 });
 
 //ROTA DE FALLBACK...
