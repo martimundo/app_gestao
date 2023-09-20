@@ -21,7 +21,7 @@ class FornecedorController extends Controller
 
     public function store(Request $request)
     {
-        
+
         if ($request->input('_token') != '' && $request->input('id') == '') {
 
             $regras = [
@@ -44,15 +44,14 @@ class FornecedorController extends Controller
 
             $fornecedor = new Fornecedor();
             $fornecedor->create($request->all());
-           
         }
 
-        if ($request->input('_token') != '' && $request->input('id') != ''){
+        if ($request->input('_token') != '' && $request->input('id') != '') {
             $fornecedor = Fornecedor::find($request->input('id'));
-           // dd($fornecedor);
+            // dd($fornecedor);
             $fornecedor->update($request->all());
 
-            return redirect()->route('app.fornecedor.editar',['id'=>$request->input('id')]);
+            return redirect()->route('app.fornecedor.editar', ['id' => $request->input('id')]);
         }
         return redirect()->route('app.fornecedor.listar');
     }
@@ -67,12 +66,21 @@ class FornecedorController extends Controller
             ->where('uf', 'like', '%' . $request->input('uf') . '%')
             ->paginate(10);
 
-        return view('app.fornecedor.listar', ['fornecedores'=>$fornecedores],['request'=>$request->all()]);
+        return view('app.fornecedor.listar', ['fornecedores' => $fornecedores], ['request' => $request->all()]);
     }
 
     public function editar($id)
     {
         $fornecedor = Fornecedor::find($id);
         return view('app.fornecedor.create', compact('fornecedor'));
+    }
+
+    public function excluir($id)
+    {
+
+        $fornecedor = Fornecedor::find($id);  
+        $fornecedor->delete();
+
+        return redirect()->route('app.fornecedor.listar');
     }
 }
