@@ -26,11 +26,12 @@ Route::middleware('autenticacao:padrao,.administrador')->prefix('/app')->group(f
     Route::get('/cliente', 'ClienteController@index')->name('app.cliente');
     Route::get('/fornecedor', 'FornecedorController@index')->name('app.fornecedor');
     Route::get('/produto', 'ProdutoController@index')->name('app.produto');
-    Route::get('/create', 'FornecedorController@create')->name('app.fornecedor.create');
-    Route::get('/listar', 'FornecedorController@listar')->name('app.fornecedor.listar');
+    Route::get('/fornecedor/create', 'FornecedorController@create')->name('app.fornecedor.create');
+    Route::get('/fornecedor/listar', 'FornecedorController@listar')->name('app.fornecedor.listar');
+    Route::get('/fornecedor/editar/{id}', 'FornecedorController@editar')->name('app.fornecedor.editar');
 
-    Route::post('/listar', 'FornecedorController@listar')->name('app.fornecedor.listar');
-    Route::post('/store', 'FornecedorController@store')->name('app.fornecedor.store');
+    Route::post('/fornecedor/listar', 'FornecedorController@listar')->name('app.fornecedor.listar');
+    Route::post('/fornecedor/store', 'FornecedorController@store')->name('app.fornecedor.store');
 });
 
 //ROTA DE FALLBACK...

@@ -21,6 +21,7 @@
                 <form action="{{route('app.fornecedor.listar')}}" method="post">
                     @csrf
                     <input type="text"name="nome"placeholder="Nome" class="borda-preta">
+                    <input type="text"name="cnpj"placeholder="CNPJ" class="borda-preta">
                     <input type="text"name="site"placeholder="Site" class="borda-preta">
                     <input type="text"name="uf"placeholder="UF"     class="borda-preta">
                     <input type="text"name="email"placeholder="E-mail" class="borda-preta">
