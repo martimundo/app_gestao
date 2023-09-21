@@ -11,8 +11,8 @@
         <div class="menu">
             <ul>
                 <li>
-                    <a href="{{route('app.fornecedor.create')}}">Novo</a>
-                    <a href="{{route('app.fornecedor')}}">Pesquisar</a>
+                    <a href="{{ route('produto.create') }}">Novo</a>
+                    <a href="{{ route('produto.index') }}">Listar Produtos</a>
                 </li>
             </ul>
         </div>

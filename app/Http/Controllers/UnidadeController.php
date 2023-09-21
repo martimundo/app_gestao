@@ -2,22 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Produto;
 use App\Unidade;
 use Illuminate\Http\Request;
 
-class ProdutoController extends Controller
+class UnidadeController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $produtos = Produto::paginate(10);
-        return view('app.produto.index', ['produtos'=>$produtos, 'request'=>$request->all()]);
-
+        //
     }
 
     /**
@@ -27,8 +24,7 @@ class ProdutoController extends Controller
      */
     public function create()
     {
-        $unidade = Unidade::all();
-        return view ('app.produto.create', compact('unidade',$unidade));
+        //
     }
 
     /**
@@ -39,17 +35,16 @@ class ProdutoController extends Controller
      */
     public function store(Request $request)
     {
-        Produto::create($request->all());
-        return redirect()->route('produto.index');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Produto  $produto
+     * @param  \App\Unidade  $unidade
      * @return \Illuminate\Http\Response
      */
-    public function show(Produto $produto)
+    public function show(Unidade $unidade)
     {
         //
     }
@@ -57,10 +52,10 @@ class ProdutoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Produto  $produto
+     * @param  \App\Unidade  $unidade
      * @return \Illuminate\Http\Response
      */
-    public function edit(Produto $produto)
+    public function edit(Unidade $unidade)
     {
         //
     }
@@ -69,10 +64,10 @@ class ProdutoController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Produto  $produto
+     * @param  \App\Unidade  $unidade
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Produto $produto)
+    public function update(Request $request, Unidade $unidade)
     {
         //
     }
@@ -80,10 +75,10 @@ class ProdutoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Produto  $produto
+     * @param  \App\Unidade  $unidade
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Produto $produto)
+    public function destroy(Unidade $unidade)
     {
         //
     }
