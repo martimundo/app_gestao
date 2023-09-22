@@ -54,8 +54,17 @@
                         <th> {{ $produto->estoque_maximo }}</th>
                         <th> {{ $produto->created_at }}</th>
                         <th><a href="{{ route('produto.show', ['produto' => $produto->id]) }}">Detalhes</th>
-                        <th><a href="">Editar</th>
-                        <th><a href="">Excluir</th>
+                        <th>
+                            <a href="{{ route('produto.edit', ['produto' => $produto->id]) }}">Editar
+                        </th>
+
+                        <th>
+                            <form action="{{route('produto.destroy',['produto'=>$produto->id])}}" method="post">
+                                @method('DELETE')
+                                @csrf
+                                <button type="submit" >Excluir</button>
+                            </form>
+                       </th>
                     </tr>
                 @endforeach
             @elseif(count($produtos) > 10)
