@@ -15,7 +15,7 @@
                     <a href="">Pesquisar</a>
                 </li>
             </ul>
-        </div>       
+        </div>
     </div>
 
     <h3 class="mb-5 text-center">Produtos</h3>
@@ -32,8 +32,10 @@
                 <th>Estoque Min.</th>
                 <th>Estoque Max.</th>
                 <th>Criado em:</th>
-                <th></th>
-                <th></th>
+                <th>Ações</th>
+                <th>Ações</th>
+                <th>Ações</th>
+
             </tr>
         </thead>
         <tbody class="mb-5">
@@ -41,7 +43,7 @@
             @if (count($produtos) > 0 && count($produtos) < 10)
                 @foreach ($produtos as $produto)
                     <tr>
-                        <th> <a href="{{route('app.fornecedor.editar', $produto->id)}}">Cód:{{ $produto->id }}</th>
+                        <th># {{ $produto->id }}</th>
                         <th> {{ $produto->nome }}</th>
                         <th> {{ $produto->descricao }}</th>
                         <th> {{ $produto->peso }}</th>
@@ -51,8 +53,9 @@
                         <th> {{ $produto->estoque_minimo }}</th>
                         <th> {{ $produto->estoque_maximo }}</th>
                         <th> {{ $produto->created_at }}</th>
-                        <th><a href="">Excluir </th>
+                        <th><a href="{{ route('produto.show', ['produto' => $produto->id]) }}">Detalhes</th>
                         <th><a href="">Editar</th>
+                        <th><a href="">Excluir</th>
                     </tr>
                 @endforeach
             @elseif(count($produtos) > 10)
@@ -62,10 +65,10 @@
             @endif
         </tbody>
 
-        {{$produtos->appends($request)->links()}}  
-        Total de Registros por pagina: <strong>{{$produtos->count()}}</strong><br>
-        Total de Registros: <strong>{{$produtos->total()}}</strong>
+        {{ $produtos->appends($request)->links() }}
+        Total de Registros por pagina: <strong>{{ $produtos->count() }}</strong><br>
+        Total de Registros: <strong>{{ $produtos->total() }}</strong>
     </table>
-    
+
 
 @endsection

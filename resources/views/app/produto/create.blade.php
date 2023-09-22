@@ -60,8 +60,8 @@
 
                     <label for="cars">Unidade</label>
                     <select name="unidade_id" id="cars" style="margin-bottom: 30px;">
-                        @foreach ($unidade as $un)
-                            <option value="{{ $un->id }}">{{ $un->descricao }}</option>
+                        @foreach ($unidades as $unidade)
+                            <option value="{{ $unidade->id }}"{{old('unidade_id')== $unidade->id ? 'selected' : ''}}>{{ $unidade->descricao }}</option>
                         @endforeach
 
                     </select>
