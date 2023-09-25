@@ -32,8 +32,11 @@ Route::middleware('autenticacao:padrao,.administrador')->prefix('/app')->group(f
     Route::post('/fornecedor/listar', 'FornecedorController@listar')->name('app.fornecedor.listar');
     Route::post('/fornecedor/store', 'FornecedorController@store')->name('app.fornecedor.store');
     
-    
-    Route::resource('/produto','ProdutoController');
+    //produtos
+    Route::resource('produto','ProdutoController');
+
+    //Detalhes do Produto
+    Route::resource('produto-detalhe', 'ProdutoDetalheController');
 });
 
 //ROTA DE FALLBACK...
