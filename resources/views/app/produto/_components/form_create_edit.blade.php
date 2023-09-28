@@ -53,6 +53,12 @@
             {{ $errors->has('estoque_minimo') ? $errors->first('estoque_minimo') : '' }}
         </div>
         <div class="col-3">
+            <label for="cars">Estoque Máximo</label>
+            <input type="text"name="estoque_maximo"placeholder="Estoque Máximo" class="form-control form-control-sm"
+                value="{{ $produto->estoque_máximo ?? old('estoque_maximo') }}">
+            {{ $errors->has('estoque_maximo') ? $errors->first('estoque_maximo') : '' }}
+        </div>
+        <div class="col-3">
             <label for="cars">Unidade</label>
             <select name="unidade_id" id="cars" class="form-select" aria-label="Default select example">
                 @foreach ($unidades as $unidade)

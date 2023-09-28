@@ -53,7 +53,7 @@ class FornecedorController extends Controller
 
             return redirect()->route('app.fornecedor.editar', ['id' => $request->input('id')]);
         }
-        return redirect()->route('app.fornecedor.listar');
+        return redirect()->route('app.fornecedor.listar')->with('sucess','Fornecedor Cadatrado Com sucesso!');
     }
 
 
@@ -81,6 +81,6 @@ class FornecedorController extends Controller
         $fornecedor = Fornecedor::find($id);  
         $fornecedor->delete();
 
-        return redirect()->route('app.fornecedor.listar');
+        return redirect()->route('app.fornecedor.listar')->with('sucess', 'Registro excluído');
     }
 }

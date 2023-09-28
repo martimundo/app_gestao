@@ -65,7 +65,7 @@ class ProdutoController extends Controller
         $request->validate($regras, $feedback);
 
         Produto::create($request->all());
-        return redirect()->route('produto.index');
+        return redirect()->route('produto.index')->with('success','Produto Cadastro com sucesso');
     }
 
     /**

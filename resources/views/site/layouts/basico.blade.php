@@ -16,6 +16,7 @@
 
 <body >
     @include('site.layouts._partials.topo')
+    
     @yield('conteudo'){{-- aqui eu chamo o meu conteudo criado dentro da seção. --}}
     @include('site.layouts._partials.rodape')
 </body>

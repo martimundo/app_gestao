@@ -18,9 +18,9 @@
     <div id="layoutSidenav">
 
         @include('app.layouts._partials.topo')
-
         @include('app.layouts._partials.sidebar')
         <div id="layoutSidenav_content">
+            @include('flash_message')
             @yield('conteudo')
         </div>
 
