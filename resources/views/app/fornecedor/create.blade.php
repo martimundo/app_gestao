@@ -1,58 +1,66 @@
 @extends('app.layouts.basico')
 
-@section('titulo', 'Cliente')
+@section('titulo', 'Fornecedor')
 
 @section('conteudo')
 
-    <div class="conteudo-basico">
-        <div class="titulo-pagina">
-            <p>Fornecedor - Adicionar</p>
-        </div>
-        <div class="menu">
-
-            <ul>
-                <li>
-                    <a href="{{ route('app.fornecedor.create') }}">Novo</a>
-                    <a href="{{ route('app.fornecedor.listar') }}">Listar Fornecedores</a>
-                    <a href="{{ route('app.fornecedor') }}">Pesquisar</a>
+    <div class="container mt-1">
+        <nav aria-label="breadcrumb ml-1">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="{{ route('app.fornecedor.create') }}" class="btn btn-outline-primary">Novo</a>
+                    <a href="{{ route('app.fornecedor.listar') }}" class="btn btn-outline-secondary">Listar Fornecedores</a>
+                    <a href="{{ route('app.fornecedor') }}" class="btn btn-outline-warning">Pesquisar</a>
                 </li>
-            </ul>
-        </div>
-        <div class="informacao-pagina">
 
-            <div style="width: 30%; margin-left: auto; margin-right: auto;">
-                {{$msg ?? ''}}
-                <form action="{{ route('app.fornecedor.store') }}" method="post">
-                    <input type="hidden" name="id" value="{{ $fornecedor->id ?? '' }}">
-                    @csrf
-                    <input type="text"name="nome"placeholder="Nome" class="borda-preta"
+            </ol>
+        </nav>
+        <form action="{{ route('app.fornecedor.store') }}" method="post">
+            <input type="hidden" name="id" value="{{ $fornecedor->id ?? '' }}">
+            @csrf
+            <div class="row">
+                <div class="col-6">
+                    <label for="exampleFormControlInput1" class="form-label">Nome</label>
+                    <input type="text"name="nome"placeholder="Nome" class="form-control"
                         value="{{ $fornecedor->nome ?? old('nome') }}">
                     {{ $errors->has('nome') ? $errors->first('nome') : '' }}
-
-                    <input type="text"name="cnpj"placeholder="CNPJ" class="borda-preta"
+                </div>
+                <div class="col-6">
+                    <label for="exampleFormControlInput1" class="form-label">CNPJ</label>
+                    <input type="text"name="cnpj"placeholder="CNPJ" class="form-control"
                         value="{{ $fornecedor->cnpj ?? old('cnpj') }}">
                     {{ $errors->has('cnpj') ? $errors->first('cnpj') : '' }}
-
-                    <input type="text"name="telefone"placeholder="Nº Telefone" class="borda-preta"
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <label for="exampleFormControlInput1" class="form-label">Nº Telefone</label>
+                    <input type="text"name="telefone"placeholder="Nº Telefone" class="form-control"
                         value="{{ $fornecedor->telefone ?? old('telefone') }}">
                     {{ $errors->has('cnpj') ? $errors->first('cnpj') : '' }}
-
-                    <input type="text"name="site"placeholder="Site" class="borda-preta"
+                </div>
+                <div class="col-4">
+                    <label for="exampleFormControlInput1" class="form-label">Site da Empresa</label>
+                    <input type="text"name="site"placeholder="Site" class="form-control"
                         value="{{ $fornecedor->site ?? old('site') }}">
                     {{ $errors->has('site') ? $errors->first('site') : '' }}
-
-                    <input type="text"name="uf"placeholder="UF" class="borda-preta"
+                </div>
+                <div class="col-4">
+                    <label for="exampleFormControlInput1" class="form-label">UF</label>
+                    <input type="text"name="uf"placeholder="UF" class="form-control"
                         value="{{ $fornecedor->uf ?? old('uf') }}">
                     {{ $errors->has('uf') ? $errors->first('uf') : '' }}
-
-                    <input type="text"name="email"placeholder="E-mail" class="borda-preta"
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <label for="exampleFormControlInput1" class="form-label">E-mail</label>
+                    <input type="text"name="email"placeholder="E-mail" class="form-control"
                         value="{{ $fornecedor->email ?? old('email') }}">
                     {{ $errors->has('email') ? $errors->first('email') : '' }}
-
-                    <button type="submit" class="borda-preta">Cadastrar</button>
-                </form>
+                </div>
             </div>
-        </div>
+            <button type="submit" class="btn btn-primary mt-1">Cadastrar</button>
+        </form>
     </div>
-
 @endsection

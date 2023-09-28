@@ -1,16 +1,22 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 
 <head>
-    <title>App-Gestão - @yield('titulo')</title>
-    <link rel="stylesheet" href="{{ asset('/assets/style/app.css') }}">
-    {{--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">--}}
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Login - SB Admin @yield('title', 'App Super Gestão')></title>    
+    <link rel="stylesheet" href="{{ asset('/assets/css/estilo_basico.css') }}">
+    <link rel="stylesheet" href="{{ asset('/assets/css/style.css') }}">
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <meta charset="utf-8">
 </head>
 
-<body>
+<body class="bg-primary">
     @include('site.layouts._partials.topo')
-    @yield('conteudo'){{--aqui eu chamo o meu conteudo criado dentro da seção. --}}
+    @yield('conteudo'){{-- aqui eu chamo o meu conteudo criado dentro da seção. --}}
     @include('site.layouts._partials.rodape')
 </body>
 

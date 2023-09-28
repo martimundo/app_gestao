@@ -1,46 +1,30 @@
-@if (isset($produto_detalhe_detalhe->id))
-    <form action="{{ route('produto.update', ['produto' => $produto_detalhe->id]) }}" method="post">
-        
+@if (isset($produto_detalhe->id))
+    <form action="{{ route('produto-detalhe.update', ['produto' => $produto_detalhe->id]) }}" method="post">
         @csrf
         @method('PUT')
     @else
-        <form action="{{ route('produto-detalhe.store') }}" method="post">           
-        @csrf
+        <form action="{{ route('produto-detalhe.store') }}" method="post">
+            @csrf
 @endif
-<label for="cars">Nome</label>
-<input type="text"name="nome"placeholder="Nome do Produto" class="borda-preta"
-    value="{{ $produto_detalhe->nome ?? old('nome') }}">
-{{ $errors->has('nome') ? $errors->first('nome') : '' }}
+<label for="cars">Produto ID</label>
+<input type="text"name="produto_id" placeholder="Produto ID" class="borda-preta"
+    value="{{ $produto_detalhe->produto_id ?? old('produto_id') }}">
+{{ $errors->has('produto_id') ? $errors->first('produto_id') : '' }}
 
-<label for="cars">Descrição</label>
-<input type="text"name="descricao"placeholder="Uma breve descricao" class="borda-preta"
-    value="{{ $produto_detalhe->descricao ?? old('descricao') }}">
-{{ $errors->has('descricao') ? $errors->first('descricao') : '' }}
+<label for="cars">Comprimento</label>
+<input type="text"name="comprimento" placeholder="Comprimento do Produto" class="borda-preta"
+    value="{{ $produto_detalhe->comprimento ?? old('comprimento') }}">
+{{ $errors->has('comprimento') ? $errors->first('comprimento') : '' }}
 
-<label for="cars">Peso</label>
-<input type="text" name="peso"placeholder="Informe o peso" class="borda-preta"
-    value="{{ $produto_detalhe->peso ?? old('peso') }}">
+<label for="cars">Altura</label>
+<input type="text" name="altura" placeholder="Informe a Altura do Produto" class="borda-preta"
+    value="{{ $produto_detalhe->altura ?? old('altura') }}">
 {{ $errors->has('peso') ? $errors->first('peso') : '' }}
 
-<label for="cars">Preço de Custo</label>
-<input type="text"name="preco_custo"placeholder="Preço de Custo" class="borda-preta"
-    value="{{ $produto_detalhe->preco_custo ?? old('preco_custo') }}">
-{{ $errors->has('preco_custo') ? $errors->first('preco_custo') : '' }}
-
-<label for="cars">Preço de Venda</label>
-<input type="text"name="preco_venda"placeholder="Preço de Venda" class="borda-preta"
-    value="{{ $produto_detalhe->preco_venda ?? old('preco_venda') }}">
-{{ $errors->has('preco_venda') ? $errors->first('preco_venda') : '' }}
-
-<label for="cars">Estoque Minimo</label>
-<input type="text"name="estoque_minimo"placeholder="Estoque Minimo" class="borda-preta"
-    value="{{ $produto_detalhe->estoque_minimo ?? old('estoque_minimo') }}">
-{{ $errors->has('estoque_minimo') ? $errors->first('estoque_minimo') : '' }}
-
-<label for="cars">Estoque Maximo</label>
-<input type="text"name="estoque_maximo"placeholder="Estoque Máximo" class="borda-preta"
-    value="{{ $produto_detalhe->estoque_maximo ?? old('estoque_maximo') }}">
-{{ $errors->has('estoque_maximo') ? $errors->first('estoque_maximo') : '' }}
+<label for="cars">Largura</label>
+<input type="text"name="largura"placeholder="Largura do Produto" class="borda-preta"
+    value="{{ $produto_detalhe->largura ?? old('largura') }}">
+{{ $errors->has('largura') ? $errors->first('largura') : '' }}
 
 <label for="cars">Unidade</label>
 <select name="unidade_id" id="cars" style="margin-bottom: 30px;">

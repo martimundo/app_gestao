@@ -3,26 +3,8 @@
 @section('titulo', 'Produto')
 
 @section('conteudo')
-
-    <div class="conteudo-basico">
-        <div class="titulo-pagina">
-            <h2>Editar Produto</h2>
-        </div>
-        <div class="menu">
-
-            <ul>
-                <li>
-                    <a href="{{ route('produto.index') }}">Voltar</a>
-                    <a href="">Consultar</a>                   
-                </li>
-            </ul>
-        </div>
-        <div class="informacao-pagina">
-            <div style="width: 30%; margin-left: auto; margin-right: auto;">
-                @component('app.produto._components.form_create_edit',['produto'=> $produto, 'unidades'=>$unidades])                   
-                @endcomponent
-            </div>
-        </div>
-    </div>
+    <h2>Editar Produto</h2>
+    @component('app.produto._components.form_create_edit', ['produto' => $produto, 'unidades' => $unidades])
+    @endcomponent
 
 @endsection
