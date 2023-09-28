@@ -55,7 +55,7 @@
         <div class="col-3">
             <label for="cars">Estoque Máximo</label>
             <input type="text"name="estoque_maximo"placeholder="Estoque Máximo" class="form-control form-control-sm"
-                value="{{ $produto->estoque_máximo ?? old('estoque_maximo') }}">
+                value="{{ $produto->estoque_maximo ?? old('estoque_maximo') }}">
             {{ $errors->has('estoque_maximo') ? $errors->first('estoque_maximo') : '' }}
         </div>
         <div class="col-3">
@@ -71,8 +71,8 @@
     </div>
     <div class="mb-3">
         <label class="form-label" for="message">Descrição do Produto</label>
-        <textarea style="height: 10rem;" class="form-control @error('telefone') is-invalid @enderror" id="message"
-            type="text" name="descricao"placeholder="Uma breve descricao"> {{ old('mensagem') != '' ? old('mensagem') : '' }}</textarea>
+        <textarea style="height: 10rem;" class="form-control @error('descricao') is-invalid @enderror" id="message"
+            type="text" name="descricao" placeholder="Uma breve descricao">{{ old('descricao') != '' ? old('descricao') : '' }}</textarea>
         @error('message')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>

@@ -63,7 +63,7 @@ class LoginController extends Controller
 
             //dd($_SESSION);
 
-           return redirect()->route('app.cliente');
+           return redirect()->route('app.home');
         } else {
             return redirect()->route('site.login', ['erro'=>1]);
         }
