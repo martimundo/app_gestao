@@ -72,7 +72,7 @@
     <div class="mb-3">
         <label class="form-label" for="message">Descrição do Produto</label>
         <textarea style="height: 10rem;" class="form-control @error('descricao') is-invalid @enderror" id="message"
-            type="text" name="descricao" placeholder="Uma breve descricao">{{ old('descricao') != '' ? old('descricao') : '' }}</textarea>
+            type="text" name="descricao" placeholder="Uma breve descricao">{{ $produto->descricao}}</textarea>
         @error('message')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>

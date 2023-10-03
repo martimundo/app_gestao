@@ -6,7 +6,8 @@
     <div class="container p-2">
         <nav aria-label="breadcrumb ml-1">
             <ol class="breadcrumb ">
-                <li class="breadcrumb-item "><a href="{{ route('produto.create') }}" class="btn btn-outline-success btn-sm">Novo</a></li>
+                <li class="breadcrumb-item "><a href="{{ route('produto.create') }}"
+                        class="btn btn-outline-success btn-sm">Novo</a></li>
             </ol>
         </nav>
         <table class="table table-striped table-responsive table-bordered table-hover table-sm">
@@ -22,6 +23,9 @@
                     <th scope="col">Preço de Venda</th>
                     <th scope="col">Estoque Min.</th>
                     <th scope="col">Estoque Max.</th>
+                    <th scope="col">Comprimento</th>
+                    <th scope="col">Altura</th>
+                    <th scope="col">Largura</th>
                     <th scope="col">Ações</th>
                     <th scope="col">Ações</th>
                     <th scope="col">Ações</th>
@@ -41,9 +45,14 @@
                             <th scope="row"> {{ $produto->preco_venda }}</th>
                             <th scope="row"> {{ $produto->estoque_minimo }}</th>
                             <th scope="row"> {{ $produto->estoque_maximo }}</th>
-                            <th scope="row"><a href="{{ route('produto.show', ['produto' => $produto->id]) }}" class="btn btn-outline-primary btn-sm">Detalhes</th>
+                            <th scope="row">{{ $produto->comprimento ?? '' }} </th>
+                            <th scope="row">{{ $produto->altura ?? '' }} </th>
+                            <th scope="row">{{ $produto->larguda ?? '' }} </th>
+                            <th scope="row"><a href="{{ route('produto.show', ['produto' => $produto->id]) }}"
+                                    class="btn btn-outline-primary btn-sm">Detalhes</th>
                             <th scope="row">
-                                <a href="{{ route('produto.edit', ['produto' => $produto->id]) }} "class="btn btn-outline-info btn-sm">Editar
+                                <a
+                                    href="{{ route('produto.edit', ['produto' => $produto->id]) }} "class="btn btn-outline-info btn-sm">Editar
                             </th>
                             <th scope="row">
                                 <form action="{{ route('produto.destroy', ['produto' => $produto->id]) }}" method="post">

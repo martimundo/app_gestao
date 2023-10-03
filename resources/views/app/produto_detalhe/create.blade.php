@@ -1,21 +1,11 @@
-
 @extends('app.layouts.basico')
 
-@section('titulo', 'Detelhes do Produto')
+@section('titulo', 'Cadatrar Detalhes do Produto')
 
 @section('conteudo')
 
-    <div class="conteudo-basico">
-       
-        <div class="informacao-pagina">
+    @component('app.produto_detalhe._components.form_create_edit', ['unidades' => $unidades])
+    @endcomponent
 
-            <div style="width: 30%; margin-left: auto; margin-right: auto;">
-
-               @component('app.produto_detalhe._components.form_create_edit',['unidades'=>$unidades])
-                   
-               @endcomponent
-            </div>
-        </div>
-    </div>
 
 @endsection

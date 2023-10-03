@@ -28,7 +28,7 @@
                         <a class="nav-link" href="#">
                             <div class="sb-nav-link-icon"><i class="fa-solid fa-gears"></i></div>Unidades
                         </a>
-                        <a class="nav-link" href="#"><div class="sb-nav-link-icon"><i class="fa-solid fa-pencil"></i></div>Detalhes do Produto</a>
+                        <a class="nav-link" href="{{route('produto-detalhe.create')}}"><div class="sb-nav-link-icon"><i class="fa-solid fa-pencil"></i></div>Detalhes do Produto</a>
                     </nav>
                 </div>
 
