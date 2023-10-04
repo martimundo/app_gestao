@@ -36,7 +36,7 @@
                 @if (count($produtos) > 0 && count($produtos) < 10)
                     @foreach ($produtos as $produto)
                         <tr>
-                            <th scope="row"># {{ $produto->id }}</th>
+                            <th scope="row">#{{ $produto->id }}</th>
                             <th scope="row"> {{ $produto->nome }}</th>
                             <th scope="row"> {{ $produto->descricao }}</th>
                             <th scope="row"> {{ $produto->peso }}</th>
@@ -45,9 +45,9 @@
                             <th scope="row"> {{ $produto->preco_venda }}</th>
                             <th scope="row"> {{ $produto->estoque_minimo }}</th>
                             <th scope="row"> {{ $produto->estoque_maximo }}</th>
-                            <th scope="row">{{ $produto->comprimento ?? '' }} </th>
-                            <th scope="row">{{ $produto->altura ?? '' }} </th>
-                            <th scope="row">{{ $produto->larguda ?? '' }} </th>
+                            <th scope="row">{{ $produto->produtoDetalhe->comprimento ?? '' }} </th>
+                            <th scope="row">{{ $produto->produtoDetalhe->altura ?? '' }} </th>
+                            <th scope="row">{{ $produto->produtoDetalhe->larguda ?? '' }} </th>
                             <th scope="row"><a href="{{ route('produto.show', ['produto' => $produto->id]) }}"
                                     class="btn btn-outline-primary btn-sm">Detalhes</th>
                             <th scope="row">

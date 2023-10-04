@@ -7,7 +7,6 @@
     </nav>
     @if (isset($produto->id))
         <form action="{{ route('produto.update', ['produto' => $produto->id]) }}" method="post">
-
             @csrf
             @method('PUT')
         @else
@@ -72,7 +71,7 @@
     <div class="mb-3">
         <label class="form-label" for="message">Descrição do Produto</label>
         <textarea style="height: 10rem;" class="form-control @error('descricao') is-invalid @enderror" id="message"
-            type="text" name="descricao" placeholder="Uma breve descricao">{{ $produto->descricao}}</textarea>
+            type="text" name="descricao" placeholder="Uma breve descricao">{{ $produto->descricao ?? old('descricao') }}</textarea>
         @error('message')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
