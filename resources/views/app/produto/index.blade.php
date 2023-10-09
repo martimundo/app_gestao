@@ -6,61 +6,58 @@
     <div class="container p-2">
         <nav aria-label="breadcrumb ml-1">
             <ol class="breadcrumb ">
-                <li class="breadcrumb-item "><a href="{{ route('produto.create') }}"
-                        class="btn btn-outline-success btn-sm">Novo</a></li>
+                <li class="breadcrumb-item "><a href="{{ route('produto.create') }}"class="btn btn-success btn-sm ">Cadastrar Novo Produto</a></li>
             </ol>
         </nav>
-        <table class="table table-striped table-responsive table-bordered table-hover table-sm">
+        <table class="table table-striped table-responsive table-hover table-bordered table-sm">
             <caption>Lista Produtos</caption>
-            <thead class="thead-dark">
+            <thead>
                 <tr>
                     <th scope="col">Cód. Prod.</th>
                     <th scope="col">Nome</th>
-                    <th scope="col">Descrição</th>
+                    <th scope="col">Fornecedor</th>
+                    <th scope="col">Site do Fornecedor</th>
                     <th scope="col">Peso</th>
-                    <th scope="col">Preço de Custo</th>
-                    <th scope="col">Unidade</th>
-                    <th scope="col">Preço de Venda</th>
-                    <th scope="col">Estoque Min.</th>
-                    <th scope="col">Estoque Max.</th>
+                    <th scope="col">Unid</th>
+                    <th scope="col">Vl.Custo</th>
+                    <th scope="col">Vl.Venda</th>
+                    <th scope="col">Qtd.Min.</th>
+                    <th scope="col">Qtd.Max.</th>
                     <th scope="col">Comprimento</th>
                     <th scope="col">Altura</th>
                     <th scope="col">Largura</th>
-                    <th scope="col">Ações</th>
-                    <th scope="col">Ações</th>
-                    <th scope="col">Ações</th>
-
+                    <th colspan="3">Ações</th>
                 </tr>
             </thead>
             <tbody>
                 @if (count($produtos) > 0 && count($produtos) < 10)
                     @foreach ($produtos as $produto)
-                        <tr>
-                            <th scope="row">#{{ $produto->id }}</th>
-                            <th scope="row"> {{ $produto->nome }}</th>
-                            <th scope="row"> {{ $produto->descricao }}</th>
-                            <th scope="row"> {{ $produto->peso }}</th>
-                            <th scope="row"> {{ $produto->preco_custo }}</th>
-                            <th scope="row"> {{ $produto->unidade_id }}</th>
-                            <th scope="row"> {{ $produto->preco_venda }}</th>
-                            <th scope="row"> {{ $produto->estoque_minimo }}</th>
-                            <th scope="row"> {{ $produto->estoque_maximo }}</th>
-                            <th scope="row">{{ $produto->produtoDetalhe->comprimento ?? '' }} </th>
-                            <th scope="row">{{ $produto->produtoDetalhe->altura ?? '' }} </th>
-                            <th scope="row">{{ $produto->produtoDetalhe->larguda ?? '' }} </th>
-                            <th scope="row"><a href="{{ route('produto.show', ['produto' => $produto->id]) }}"
-                                    class="btn btn-outline-primary btn-sm">Detalhes</th>
-                            <th scope="row">
-                                <a
-                                    href="{{ route('produto.edit', ['produto' => $produto->id]) }} "class="btn btn-outline-info btn-sm">Editar
-                            </th>
-                            <th scope="row">
-                                <form action="{{ route('produto.destroy', ['produto' => $produto->id]) }}" method="post">
-                                    @method('DELETE')
-                                    @csrf
-                                    <button class="btn btn-outline-danger btn-sm" type="submit">Excluir</button>
-                                </form>
-                            </th>
+                        <td>#{{ $produto->id }}</td>
+                        <td> {{ $produto->nome }}</td>
+                        <td> {{ $produto->fornecedor->nome }}</td>
+                        <td> {{ $produto->fornecedor->site }}</td>
+                        <td> {{ $produto->peso }}</td>
+                        <td> {{ $produto->unidade_id }}</td>
+                        <td> {{ $produto->preco_custo }}</td>
+                        <td> {{ $produto->preco_venda }}</td>
+                        <td> {{ $produto->estoque_minimo }}</td>
+                        <td> {{ $produto->estoque_maximo }}</td>
+                        <td> {{ $produto->produtoDetalhe->comprimento ?? '' }} </td>
+                        <td> {{ $produto->produtoDetalhe->altura ?? '' }} </td>
+                        <td> {{ $produto->produtoDetalhe->larguda ?? '' }} </td>
+                        <td><a href="{{ route('produto.show', ['produto' => $produto->id]) }}"
+                                class="btn btn-outline-primary btn-sm">Detalhes</td>
+                        <td>
+                            <a
+                                href="{{ route('produto.edit', ['produto' => $produto->id]) }} "class="btn btn-outline-info btn-sm">Editar
+                        </td>
+                        <td>
+                            <form action="{{ route('produto.destroy', ['produto' => $produto->id]) }}" method="post">
+                                @method('DELETE')
+                                @csrf
+                                <button class="btn btn-outline-danger btn-sm" type="submit">Excluir</button>
+                            </form>
+                        </td>
                         </tr>
                     @endforeach
                 @elseif(count($produtos) > 10)

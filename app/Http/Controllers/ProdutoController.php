@@ -18,7 +18,7 @@ class ProdutoController extends Controller
      */
     public function index(Request $request)
     {
-        $produtos = Item::paginate(10);
+        $produtos = Produto::with(['produtoDetalhe','fornecedor'])->paginate(10);
 
         // foreach($produtos as $key => $produto){
 

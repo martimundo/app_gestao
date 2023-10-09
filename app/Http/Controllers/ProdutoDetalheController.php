@@ -65,7 +65,7 @@ class ProdutoDetalheController extends Controller
     {
         $unidades = Unidade::all();
        return view('app.produto_detalhe.edit', ['produto_detalhe' => $produtoDetalhe, 'unidades' => $unidades]);
-    }git add
+    }
 
     /**
      * Update the specified resource in storage.

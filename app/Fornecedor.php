@@ -15,4 +15,9 @@ class Fornecedor extends Model
         'telefone',
         'uf',
     ];
+
+    public function produtos()
+    {
+        return $this->hasMany(Produto::class);
+    }
 }
