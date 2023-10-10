@@ -14,7 +14,8 @@ class Produto extends Model
         'preco_venda',
         'estoque_minimo',
         'estoque_maximo',
-        'unidade_id'
+        'unidade_id',
+        'fornecedor_id'
     ];
 
     public function produtoDetalhe(){

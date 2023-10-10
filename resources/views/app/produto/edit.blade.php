@@ -4,7 +4,7 @@
 
 @section('conteudo')
     <h2>Editar Produto</h2>
-    @component('app.produto._components.form_create_edit', ['produto' => $produto, 'unidades' => $unidades])
+    @component('app.produto._components.form_create_edit', ['produto' => $produto, 'unidades' => $unidades, 'fornecedores'=>$fornecedores])
     @endcomponent
 
 @endsection

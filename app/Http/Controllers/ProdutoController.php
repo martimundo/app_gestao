@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Fornecedor;
 use App\Item;
 use App\Produto;
 use App\ProdutoDetalhe;
@@ -18,7 +19,7 @@ class ProdutoController extends Controller
      */
     public function index(Request $request)
     {
-        $produtos = Produto::with(['produtoDetalhe','fornecedor'])->paginate(10);
+        $produtos = Produto::with(['produtoDetalhe', 'fornecedor'])->paginate(10);
 
         // foreach($produtos as $key => $produto){
 
@@ -42,7 +43,8 @@ class ProdutoController extends Controller
     public function create()
     {
         $unidades = Unidade::all();
-        return view('app.produto.create', compact('unidades', $unidades));
+        $fornecedores = Fornecedor::all();
+        return view('app.produto.create', compact('unidades',$unidades, 'fornecedores', $fornecedores));
     }
 
     /**
@@ -62,6 +64,7 @@ class ProdutoController extends Controller
             'preco_venda' => 'required',
             'estoque_minimo' => 'required',
             'estoque_maximo' => 'required',
+            'fornecedor_id'=>'exists:fornecedores,id'
 
         ];
 
@@ -73,13 +76,15 @@ class ProdutoController extends Controller
             'descricao.min' => 'O campo descricao dever ter no minimo 10 caractares.',
             'descricao.max' => 'O campo descricao dever ter no máximo 240 caractares.',
             'peso.integer' => 'O peso dever ser um valor inteiro. Ex: 1,2,3...',
-            'unidade_id.exists' => 'A unidade de medida informada não existe'
+            'unidade_id.exists' => 'A unidade de medida informada não existe',
+            'fornecedor_id.exists'=>'Informe um fornecedor para o produto.'
         ];
 
         $request->validate($regras, $feedback);
+        dd($request->all());
 
         Produto::create($request->all());
-        return redirect()->route('produto.index')->with('success','Produto Cadastro com sucesso');
+        return redirect()->route('produto.index')->with('success', 'Produto Cadastro com sucesso');
     }
 
     /**
@@ -89,9 +94,10 @@ class ProdutoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Produto $produto)
-    {        
+    {
         $unidade = Unidade::first()->get();
-        return view('app.produto.show',['produto'=>$produto,'unidade'=>$unidade] );
+        
+        return view('app.produto.show', ['produto' => $produto, 'unidade' => $unidade]);
     }
 
     /**
@@ -101,10 +107,10 @@ class ProdutoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Produto $produto)
-    {        
+    {
         $unidades = Unidade::all();
-        return view('app.produto.edit',['produto'=> $produto, 'unidades'=>$unidades]);
-        
+        $fornecedores = Fornecedor::all();
+        return view('app.produto.edit', ['produto' => $produto, 'unidades' => $unidades, 'fornecedores'=>$fornecedores]);
     }
 
     /**
@@ -116,6 +122,33 @@ class ProdutoController extends Controller
      */
     public function update(Request $request, Produto $produto)
     {
+        $regras = [
+            'nome' => 'required|min:10|max:40',
+            'descricao' => 'required|min:10|max:240',
+            'peso' => 'required|integer',
+            'preco_custo' => 'required',
+            'unidade_id' => 'exists:unidades,id',
+            'preco_venda' => 'required',
+            'estoque_minimo' => 'required',
+            'estoque_maximo' => 'required',
+            'fornecedor_id'=>'exists:fornecedores,id'
+
+        ];
+
+        $feedback = [
+
+            'required' => 'O campo :attribute deve ser preenchido',
+            'nome.min' => 'O campo nome dever ter no minimo 3 caractares.',
+            'nome.max' => 'O campo nome dever ter no máximo 40 caractares.',
+            'descricao.min' => 'O campo descricao dever ter no minimo 10 caractares.',
+            'descricao.max' => 'O campo descricao dever ter no máximo 240 caractares.',
+            'peso.integer' => 'O peso dever ser um valor inteiro. Ex: 1,2,3...',
+            'unidade_id.exists' => 'A unidade de medida informada não existe',
+            'fornecedor_id.exists'=>'Informe um fornecedor para o produto.'
+        ];
+
+        $request->validate($regras, $feedback);
+
         $produto->update($request->all());
         return redirect()->route('produto.index');
     }
@@ -127,7 +160,7 @@ class ProdutoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(Produto $produto)
-    {        
+    {
         $produto->delete();
         return redirect()->route('produto.index');
     }
