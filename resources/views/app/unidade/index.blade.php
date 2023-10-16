@@ -14,15 +14,17 @@
             <thead>
                 <tr>
                     <th scope="col">Cód. Unidade.</th>
+                    <th scope="col">Prefixo Unidade</th>
                     <th scope="col">Nome</th>
                     <th colspan="3">Ações</th>                    
                     
                 </tr>
             </thead>            
             <tbody>
-                @if (count($unidades) > 0 && count($unidades) < 10)
+                @if (count($unidades) > 0 )
                     @foreach ($unidades as $unidade)
                         <td>#{{ $unidade->id }}</td>
+                        <td> {{ $unidade->unidade }}</td>
                         <td> {{ $unidade->descricao }}</td>                        
                         <td><a href="{{ route('unidade.show', ['unidade' => $unidade->id]) }}" class="btn btn-outline-primary btn-sm">Detalhes</td>
                         <td>

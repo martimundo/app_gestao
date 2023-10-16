@@ -22,7 +22,7 @@
                 @if (count($pedidos) > 0 )
                     @foreach ($pedidos as $pedido)
                         <td>#{{ $pedido->id }}</td>
-                        <td> {{ $pedido->cliente_id }}</td>                        
+                        <td> {{ $pedido->cliente->nome }}</td>                        
                         <td><a href="{{ route('pedido.show', ['pedido' => $pedido->id]) }}" class="btn btn-outline-primary btn-sm">Detalhes</td>
                         <td>
                             <a href="{{ route('pedido.edit', ['pedido' => $pedido->id]) }} "class="btn btn-outline-info btn-sm">Editar

@@ -110,7 +110,13 @@ class PedidoController extends Controller
      */
     public function destroy(Pedido $pedido)
     {        
-        $pedido->delete($pedido);
+        if($pedido->cliente){
+            return redirect()->route('pedido.index')
+            ->with("warning", "OPS!!! Pedido nº {$pedido->id} não pode ser excluído");
+        }else{
+            $pedido->delete($pedido);
+        }
+        
         return redirect()->route('pedido.index');
     }
 }

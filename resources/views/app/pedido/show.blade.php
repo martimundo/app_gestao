@@ -14,7 +14,7 @@
         <div class="card" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-title">{{ $pedido->id }}</h5>
-                <p class="card-title">Cliente: {{ $pedido->cliente_id }}</p>
+                <p class="card-title">Cliente: {{ $pedido->cliente->nome }}</p>
                 <a href="{{ route('pedido.edit', $pedido->id) }}" class="btn btn-primary">Editar Dados</a>
             </div>
         </div>

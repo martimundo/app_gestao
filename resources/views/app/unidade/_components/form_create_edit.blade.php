@@ -15,6 +15,17 @@
     <div class="row">
         <div class="col-6">
             <div class="mb-3">
+                <label for="cars">Prefixo da Unidade</label>
+                <input type="text"name="unidade"placeholder="Ex: Cm, Kl, mm..."
+                    class="form-control form-control-sm @error('unidade') is-invalid @enderror" id="message"
+                    value="{{ $unidade->unidade ?? old('unidade') }}">
+                @error('unidade')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+            <div class="mb-3">
                 <label for="cars">Descrição da unidade</label>
                 <input type="text"name="descricao"placeholder="Descrição"
                     class="form-control form-control-sm @error('descricao') is-invalid @enderror" id="message"

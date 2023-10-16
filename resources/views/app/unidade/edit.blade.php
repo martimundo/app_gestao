@@ -4,8 +4,8 @@
 
 @section('conteudo')
     <div class="p-1">
-        <h2>Editar Unidades</h2>
-        @component('app.cliente._components.form_create_edit')
+        <h5 class="m-2">Editar Unidades</h5>
+        @component('app.unidade._components.form_create_edit', ['unidade'=>$unidade])
         @endcomponent
     </div>
 @endsection

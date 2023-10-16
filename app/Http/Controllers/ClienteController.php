@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Cliente;
+use App\Pedido;
 use Illuminate\Http\Request;
 
 class ClienteController extends Controller
@@ -63,9 +64,9 @@ class ClienteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Cliente $cliente)
     {
-        //
+        return view('app.cliente.show', compact('cliente'));
     }
 
     /**
@@ -74,9 +75,9 @@ class ClienteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Cliente $cliente)
     {
-        //
+        return view('app.cliente.edit', compact('cliente', $cliente));
     }
 
     /**
@@ -86,9 +87,24 @@ class ClienteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Cliente $cliente)
     {
-        //
+        $regras = [
+            'nome' => 'required|min:10|max:60',       
+
+        ];
+
+        $feedback = [
+
+            'required' => 'O campo :attribute deve ser preenchido',
+            'nome.min' => 'O campo nome dever ter no minimo 3 caractares.',
+            'nome.max' => 'O campo nome dever ter no máximo 40 caractares.',
+            
+        ];
+
+        $request->validate($regras, $feedback);
+        $cliente->update($request->all());
+        return redirect()->route('cliente.index');
     }
 
     /**
@@ -97,8 +113,16 @@ class ClienteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy(Cliente $cliente)
+    {   
+      
+        if($cliente->pedido){
+            return redirect()->route('cliente.index')
+            ->with("warning", "O cliente {$cliente->nome} ser excluído(a) verifique se ela tem pedidos!");
+        }else{
+            
+            $cliente->delete();
+        }
+        return redirect()->route('cliente.index');
     }
 }

@@ -10,7 +10,7 @@ class Cliente extends Model
     protected $fillable = ['nome'];
 
     public function pedido(){
-        return $this->belongsTo(Pedido::class);
+        return $this->hasMany(Pedido::class);
     }
    
 }
