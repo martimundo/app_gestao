@@ -19,16 +19,21 @@
                         <a class="nav-link" href="{{ route('produto.index') }}">
                             <div class="sb-nav-link-icon"><i class="fas fa-solid fa-tag"></i></div> Produto
                         </a>
-                        <a class="nav-link" href="{{ route('app.cliente') }}">
+                        <a class="nav-link" href="{{ route('cliente.index') }}">
                             <div class="sb-nav-link-icon"><i class="fa-regular fa-address-card"></i></div>Clientes
+                        </a>
+                        <a class="nav-link" href="{{ route('pedido.index') }}">
+                            <div class="sb-nav-link-icon"><i class="fa-regular fa-address-card"></i></div>Pedidos
                         </a>
                         <a class="nav-link" href="{{ route('app.fornecedor') }}">
                             <div class="sb-nav-link-icon"><i class="fa-solid fa-industry"></i></div>Fornecedores
                         </a>
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{{ route('unidade.index') }}">
                             <div class="sb-nav-link-icon"><i class="fa-solid fa-gears"></i></div>Unidades
                         </a>
-                        <a class="nav-link" href="{{route('produto-detalhe.create')}}"><div class="sb-nav-link-icon"><i class="fa-solid fa-pencil"></i></div>Detalhes do Produto</a>
+                        <a class="nav-link" href="{{ route('produto-detalhe.create') }}">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-pencil"></i></div>Detalhes do Produto
+                        </a>
                     </nav>
                 </div>
 
@@ -64,7 +69,7 @@
                             data-bs-parent="#sidenavAccordionPages">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="401.html">Contas a Receber</a>
-                                
+
                             </nav>
                         </div>
                     </nav>

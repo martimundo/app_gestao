@@ -1,7 +1,7 @@
 <div class="container">
     <nav aria-label="breadcrumb ml-1">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ route('produto.index') }}">Voltar</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('produto.index') }}" class="btn btn-success btn-sm ">Voltar</a></li>
 
         </ol>
     </nav>

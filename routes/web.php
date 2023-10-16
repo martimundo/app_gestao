@@ -22,8 +22,7 @@ Route::post('/login', 'LoginController@autenticar')->name('site.login');
 Route::middleware('autenticacao:padrao,.administrador')->prefix('/app')->group(function () {
 
     Route::get('/home', 'HomeController@index')->name('app.home');
-    Route::get('/sair', 'LoginController@logout')->name('app.sair');
-    Route::get('/cliente', 'ClienteController@index')->name('app.cliente');
+    Route::get('/sair', 'LoginController@logout')->name('app.sair');    
     Route::get('/fornecedor', 'FornecedorController@index')->name('app.fornecedor');
     Route::get('/fornecedor/create', 'FornecedorController@create')->name('app.fornecedor.create');
     Route::get('/fornecedor/listar', 'FornecedorController@listar')->name('app.fornecedor.listar');
@@ -35,11 +34,23 @@ Route::middleware('autenticacao:padrao,.administrador')->prefix('/app')->group(f
     //produtos
     Route::resource('produto','ProdutoController');
 
+    //unidades
+    Route::resource('unidade', 'UnidadeController');
+
     //Detalhes do Produto
     Route::resource('produto-detalhe', 'ProdutoDetalheController');
+
+    //Cliente
+    Route::resource('cliente','ClienteController');
+
+    //Pedido
+    Route::resource('pedido', 'PedidoController');
+
+    //Pedido Produto
+    Route::resource('pedido-produto', 'PedidoProdutoController');
 });
 
 //ROTA DE FALLBACK...
 Route::fallback(function () {
-    echo 'Não foi possível acessar o sistema. <a href="' . route('site.index') . '">Clique aqui</a> para voltar ao inicio do sistema';
+    
 });

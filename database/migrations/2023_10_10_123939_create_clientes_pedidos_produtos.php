@@ -13,10 +13,30 @@ class CreateClientesPedidosProdutos extends Migration
      */
     public function up()
     {
-        Schema::create('clientes_pedidos_produtos', function (Blueprint $table) {
+        Schema::create('clientes', function (Blueprint $table) {
             $table->id();
+            $table->string('nome', 70);
             $table->timestamps();
         });
+        
+        Schema::create('pedidos', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('cliente_id');
+            $table->timestamps();
+
+            $table->foreign('cliente_id')->references('id')->on('clientes');
+        });
+
+        Schema::create('pedidos_produtos', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('pedido_id');
+            $table->unsignedBigInteger('produto_id');
+            $table->timestamps();
+
+            $table->foreign('pedido_id')->references('id')->on('pedidos');
+            $table->foreign('produto_id')->references('id')->on('produtos');
+        });
+        
     }
 
     /**
@@ -26,6 +46,10 @@ class CreateClientesPedidosProdutos extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('clientes_pedidos_produtos');
+        Schema::disableForeignKeyConstraints();
+        Schema::dropIfExists('clientes');
+        Schema::dropIfExists('pedidos');
+        Schema::dropIfExists('pedidos_produtosentes');
+        Schema::enableForeignKeyConstraints();
     }
 }

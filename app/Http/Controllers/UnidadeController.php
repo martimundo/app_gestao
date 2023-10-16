@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Unidade;
 use Illuminate\Http\Request;
 
+
 class UnidadeController extends Controller
 {
     /**
@@ -12,9 +13,10 @@ class UnidadeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $unidades = Unidade::paginate(10);
+        return view('app.unidade.index', ['unidades'=>$unidades, 'request'=>$request->all()]);
     }
 
     /**
@@ -24,7 +26,7 @@ class UnidadeController extends Controller
      */
     public function create()
     {
-        //
+        return view('app.unidade.create');
     }
 
     /**
