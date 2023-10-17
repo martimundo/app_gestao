@@ -11,7 +11,7 @@
             <li><a href="#">Serviços</a></li>
             <li><a href="#">Blog</a></li>
             <li><a href="{{ route('site.contato') }}">Contato</a></li>
-            <li><a href="{{ route('site.login') }}">Acessar o Sistema</a></li>
+            <li><a href="{{ route('site.login') }}" class="btn btn-outline-warning btn-sm" >Acessar o Sistema</a></li>
         </ul>
     </div>
 </div>

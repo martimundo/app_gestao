@@ -47,7 +47,9 @@ Route::middleware('autenticacao:padrao,.administrador')->prefix('/app')->group(f
     Route::resource('pedido', 'PedidoController');
 
     //Pedido Produto
-    Route::resource('pedido-produto', 'PedidoProdutoController');
+    //Route::resource('pedido-produto', 'PedidoProdutoController');
+    Route::get('pedido-produto/create/{pedido}', 'PedidoProdutoController@create')->name('pedido-produto.create');
+    Route::post('pedido-produto/store/{pedido}', 'PedidoProdutoController@store')->name('pedido-produto.store');
 });
 
 //ROTA DE FALLBACK...
