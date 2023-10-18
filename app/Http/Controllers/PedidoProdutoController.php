@@ -27,6 +27,7 @@ class PedidoProdutoController extends Controller
     public function create(Pedido $pedido)
     {
         $produtos = Produto::all();
+        
         //$pedido->produtos; //eager loading
 
         return view('app.pedido_produto.create', ['pedido'=>$pedido, 'produtos'=>$produtos]);
@@ -41,18 +42,26 @@ class PedidoProdutoController extends Controller
     public function store(Request $request, Pedido $pedido)
     {
         $regras = [
-            'produto_id'=>'exists:produtos,id'
+            'produto_id'=>'required|exists:produtos,id',
+            'quantidade'=>'required'
         ];
         $feedback=[
-            'produto_id.exists'=>'Produto Informado não cadastrado'
+            'produto_id.exists'=>'Produto Informado não cadastrado',
+            'required'=>'O campo :attribute deve possuir um valor valido!'
         ];
 
         $request->validate($regras, $feedback);
 
         $pedidoProduto = new PedidoProduto();
         $pedidoProduto->pedido_id = $pedido->id;
-        $pedidoProduto->produto_id =$request->get('produto_id');
+        $pedidoProduto->produto_id =$request->get('produto_id'); 
+        $pedidoProduto->quantidade = $request->get('quantidade');       
         $pedidoProduto->save();
+        
+        // $pedido->produtos()->attach(
+        //     $request->get('produto_id'),
+        //     ['quantidade'=>$request->get('quantidade')],
+        // );
         return redirect()->route('pedido-produto.create', ['pedido'=>$pedido->id]);
         
     }

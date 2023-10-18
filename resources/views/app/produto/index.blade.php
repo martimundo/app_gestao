@@ -6,7 +6,8 @@
     <div class="container p-2">
         <nav aria-label="breadcrumb ml-1">
             <ol class="breadcrumb ">
-                <li class="breadcrumb-item "><a href="{{ route('produto.create') }}"class="btn btn-success btn-sm ">Cadastrar Novo Produto</a></li>
+                <li class="breadcrumb-item "><a href="{{ route('produto.create') }}"class="btn btn-success btn-sm ">Cadastrar
+                        Novo Produto</a></li>
             </ol>
         </nav>
         <table class="table table-striped table-responsive table-hover table-bordered table-sm">
@@ -58,6 +59,14 @@
                                 <button class="btn btn-outline-danger btn-sm" type="submit">Excluir</button>
                             </form>
                         </td>
+                        </tr>
+                        <tr>
+                            <td colspan="13">
+                                <p>Pedidos</p>
+                                @foreach ($produto->pedidos as $pedido)
+                                    <a href="{{ route('pedido-produto.create', $pedido->id) }}"><strong class="text-danger">Cód. Pedido:</strong> {{ $pedido->id }}<br></a>
+                                @endforeach
+                            </td>
                         </tr>
                     @endforeach
                 @elseif(count($produtos) > 10)

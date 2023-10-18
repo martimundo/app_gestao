@@ -11,7 +11,6 @@
         </div>
         @component('app.pedido_produto._components.form_create', ['pedido' => $pedido, 'produtos' => $produtos])
         @endcomponent
-
         <h6>itens do Pedido</h6>
         <div class="container p-2">
             <table class="table table-striped table-responsive table-hover table-bordered table-sm">
@@ -20,17 +19,20 @@
                     <tr>
                         <th scope="col">Cód. Produto.</th>
                         <th scope="col">Nome do Produto</th>
+                        <th scope="col">Dt. inclusão do item no Pedido</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($pedido->produtos as $item)
+                    @foreach ($pedido->produtos as $produto)
                         <tr>
-                            <td>{{ $item->id }}</td>
-                            <td>{{ $item->nome }}</td>
+                            <td>{{ $produto->id }}</td>
+                            <td>{{ $produto->nome }}</td>
+                            <td>{{ $produto->pivot->created_at}}</td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
+           
         </div>
     </div>
 @endsection
