@@ -19,7 +19,7 @@
                     <tr>
                         <th scope="col">Cód. Produto.</th>
                         <th scope="col">Nome do Produto</th>
-                        <th scope="col">Dt. inclusão do item no Pedido</th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -27,7 +27,13 @@
                         <tr>
                             <td>{{ $produto->id }}</td>
                             <td>{{ $produto->nome }}</td>
-                            <td>{{ $produto->pivot->created_at}}</td>
+                            <td>
+                                <form id="form_{{$pedido->id}}_{{$produto->id}}" action="{{route('pedido-produto.destroy',['pedido'=>$pedido->id, 'produto'=>$produto->id])}}" method="post">
+                                @method('DELETE')
+                                @csrf
+                                <a href="#" onclick="document.getElementById('form_{{$pedido->id}}_{{$produto->id}}').submit()" class="btn btn-danger btn-sm"><i class="fa-regular fa-trash-can"></i> Excluir</a>
+                                </form>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
